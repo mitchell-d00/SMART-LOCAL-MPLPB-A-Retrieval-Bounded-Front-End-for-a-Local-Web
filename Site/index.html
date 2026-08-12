@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Main Index — MPLPB Local Web</title>
+<meta name="mplpb:document-id" content="LOCAL-MAIN-000">
+<meta name="mplpb:category" content="Navigator / Main Index">
+<meta name="mplpb:updated" content="2026-08-05T18:40Z v1">
+<meta name="mplpb:owner" content="Mitchell D. McPhetridge">
+<meta name="mplpb:scope" content="Entry point, crawl root, and routing map for this corpus">
+<meta name="mplpb:when-to-use" content="First page read in any session; crawl entry point; uncertain which spoke owns a query">
+<meta name="mplpb:status" content="current">
+<meta name="mplpb:supersedes" content="">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+<p class="eyebrow">MPLPB local web · crawl root</p>
+<h1>Main Index</h1>
+
+<div class="record"><dl>
+  <dt>Document ID</dt><dd>LOCAL-MAIN-000</dd>
+  <dt>Category</dt><dd>Navigator / Main Index</dd>
+  <dt>Updated</dt><dd>2026-08-05T18:40Z v1</dd>
+  <dt>Owner</dt><dd>Mitchell D. McPhetridge</dd>
+  <dt>Scope</dt><dd>Entry point, crawl root, and routing map</dd>
+  <dt>Status</dt><dd>current</dd>
+</dl></div>
+
+<h2>Boot block</h2>
+<div class="boot">
+<p><strong>What this corpus is.</strong> [One paragraph: project, purpose,
+current phase. Replace this.]</p>
+
+<p><strong>Authoritative root.</strong> This file. Every internal link is
+relative to it. The crawl boundary is this directory; a link resolving outside
+it must be rejected.</p>
+
+<p><strong>Retrieval rule.</strong> Answer corpus-dependent questions from
+retrieved pages, not from memory of a previous session. Prefer documents with
+<code>status: current</code> reachable from this index. Cite retrieved pages as
+local documents, never as published ones.</p>
+
+<p><strong>Routing.</strong> Broad request → the relevant Sub-Index. Specific
+request → the best operational page. Uncertain → this index, and ask the user to
+narrow. After answering → name one to three related pages and the path back.</p>
+
+<p><strong>Precedence.</strong> The spoke whose declared scope owns a question
+answers it. Retrieval may return results from several spokes and must preserve
+each result's source scope. Answering does not merge them: when no single scope
+cleanly owns the query, report which spokes were touched and ask the user to
+narrow.</p>
+
+<p><strong>Modes.</strong> Default <code>strict_tool_mode</code>.
+<code>hard_reality_mode</code> overrides all others on legal, medical-adjacent,
+contractual, or high-stakes safety topics.</p>
+
+<p><strong>Current state / open questions.</strong> [Two or three live items with
+paths. Replace this.]</p>
+</div>
+
+<h2>Category map</h2>
+<ul class="map">
+  <li><a href="spec/_index.html">Specification &amp; Architecture</a>
+    <span class="scope">scope: how this corpus is built, linked, crawled, and validated</span></li>
+  <li><a href="physics/_index.html">Physics</a>
+    <span class="scope">scope: example spoke — replace with a real domain or delete</span></li>
+  <li><a href="_log/revisions.html">Revision log</a>
+    <span class="scope">scope: append-only record of changes and supersessions</span></li>
+</ul>
+
+<h2>Maintenance</h2>
+<p>From the repository root: <code>python3 tools/validate.py site</code> runs the
+eight checks; <code>python3 tools/crawl.py site</code> emits crawl records;
+<code>python3 tools/search.py site "query"</code> builds an index and searches
+it.</p>
+
+<nav class="related">
+  <a href="BOOT.md">BOOT.md — plain-text twin of this boot block</a>
+</nav>
+</main>
+</body>
+</html>
