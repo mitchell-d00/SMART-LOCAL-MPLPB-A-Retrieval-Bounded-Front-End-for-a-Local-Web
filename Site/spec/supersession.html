@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Supersession — MPLPB Local</title>
+<meta name="mplpb:document-id" content="LOCAL-SPEC-002">
+<meta name="mplpb:category" content="Specification / Architecture">
+<meta name="mplpb:updated" content="2026-08-05T18:40Z v1">
+<meta name="mplpb:scope" content="Retiring a page without losing what it said">
+<meta name="mplpb:owner" content="Mitchell D. McPhetridge">
+<meta name="mplpb:when-to-use" content="Replacing a page; retiring a document; asking what a document used to say; wondering why a file sits in _log/superseded">
+<meta name="mplpb:status" content="current">
+<meta name="mplpb:supersedes" content="">
+<link rel="stylesheet" href="../style.css">
+<link rel="index" href="../index.html">
+<link rel="up" href="./_index.html">
+</head>
+<body>
+<main>
+<p class="eyebrow">MPLPB local web · specification</p>
+<h1>Supersession</h1>
+
+<div class="record"><dl>
+    <dt>Document ID</dt><dd>LOCAL-SPEC-002</dd>
+  <dt>Category</dt><dd>Specification / Architecture</dd>
+  <dt>Updated</dt><dd>2026-08-05T18:40Z v1</dd>
+  <dt>Owner</dt><dd>Mitchell D. McPhetridge</dd>
+  <dt>Scope</dt><dd>Retiring a page without losing what it said</dd>
+  <dt>Status</dt><dd>current</dd>
+</dl></div>
+
+<p>A page is never deleted and never edited into a different
+claim. It is superseded. Five things happen together, and if any one of them is
+skipped the corpus disagrees with itself:</p>
+
+<ol>
+  <li>the old file moves to <code>_log/superseded/</code></li>
+  <li>its <code>status</code> flips to <code>retired</code></li>
+  <li>it is removed from its Sub-Index</li>
+  <li>the replacement names it in <code>supersedes</code></li>
+  <li>a line is appended to the revision log</li>
+</ol>
+
+<h2>Why retired pages are still indexed</h2>
+<p>Retired pages are deliberately unlinked, so a crawl that only follows links
+from the Main Index can never reach them. If the filesystem audit is treated as
+maintenance-only, they are never indexed at all — and then <em>absent</em> and
+<em>excluded by default</em> become indistinguishable. The corpus still
+validates, still crawls, still answers current questions, and can no longer say
+what a document used to say or when it changed. That is FM-L11, and it is
+invisible to every other check.</p>
+
+<p>So retrieval defaults to <code>status = current</code>, and retired pages
+stay reachable by explicit status or by document ID, with the status surfaced
+on every returned record.</p>
+
+<nav class="related">
+  <a href="./_index.html">Up to the Sub-Index</a>
+  <a href="../index.html">Back to the Main Index</a>
+</nav>
+</main>
+</body>
+</html>

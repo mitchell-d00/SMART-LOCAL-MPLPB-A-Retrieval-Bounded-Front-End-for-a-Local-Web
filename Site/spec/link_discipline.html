@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Link Discipline — MPLPB Local</title>
+<meta name="mplpb:document-id" content="LOCAL-SPEC-001">
+<meta name="mplpb:category" content="Specification / Architecture">
+<meta name="mplpb:updated" content="2026-08-05T18:40Z v2">
+<meta name="mplpb:scope" content="Relative-link rules and the crawl boundary for the local web">
+<meta name="mplpb:owner" content="Mitchell D. McPhetridge">
+<meta name="mplpb:when-to-use" content="Adding a page; moving a page; a link broke; a crawl escaped the root; deciding between a relative and an absolute link">
+<meta name="mplpb:status" content="current">
+<meta name="mplpb:supersedes" content="LOCAL-SPEC-OLD-001">
+<link rel="stylesheet" href="../style.css">
+<link rel="index" href="../index.html">
+<link rel="up" href="./_index.html">
+</head>
+<body>
+<main>
+<p class="eyebrow">MPLPB local web · specification</p>
+<h1>Link Discipline</h1>
+
+<div class="record"><dl>
+    <dt>Document ID</dt><dd>LOCAL-SPEC-001</dd>
+  <dt>Category</dt><dd>Specification / Architecture</dd>
+  <dt>Updated</dt><dd>2026-08-05T18:40Z v2</dd>
+  <dt>Owner</dt><dd>Mitchell D. McPhetridge</dd>
+  <dt>Scope</dt><dd>Relative-link rules and the crawl boundary for the local web</dd>
+  <dt>Status</dt><dd>current</dd>
+  <dt>Supersedes</dt><dd>LOCAL-SPEC-OLD-001</dd>
+</dl></div>
+
+<p>Every internal link in this corpus is relative to the page it
+appears on. Not root-relative, not <code>file:</code>, not absolute. The reason
+is portability: the corpus has to work when it is copied to another machine,
+mounted at a different path, zipped, emailed, or opened straight off a USB
+stick with no server running at all. A root-relative link assumes a web root
+that a directory on disk does not have.</p>
+
+<h2>The crawl boundary</h2>
+<p>The directory containing <code>index.html</code> is the boundary. A link
+whose canonical path resolves outside that directory must be rejected rather
+than followed. Canonical means resolved: <code>../../../etc/passwd</code> is
+caught after resolution, not before, which is why the check compares resolved
+paths instead of inspecting the href as a string.</p>
+
+<h2>Upward links</h2>
+<p>Every page except the Main Index carries two typed links in its head:
+<code>rel="index"</code> pointing at the Main Index, and <code>rel="up"</code>
+pointing at its Sub-Index. These are what let a reader who arrives at a page
+from a search result find their way back to the map, and what let the crawler
+reconstruct the hierarchy without guessing from directory names.</p>
+
+<h2>Failure modes</h2>
+<ul class="map">
+  <li>FM-L1 — a page points to a file that no longer exists</li>
+  <li>FM-L4 — a relative path resolves outside the intended root</li>
+  <li>FM-L5 — a page needs JavaScript or a running server to be read</li>
+</ul>
+
+<nav class="related">
+  <a href="./_index.html">Up to the Sub-Index</a>
+  <a href="../index.html">Back to the Main Index</a>
+</nav>
+</main>
+</body>
+</html>
